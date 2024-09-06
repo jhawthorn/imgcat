@@ -1,24 +1,51 @@
 # Imgcat
 
-TODO: Delete this and the text below, and describe your gem
+![](screenshot.png)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/imgcat`. To experiment with that code, run `bin/console` for an interactive prompt.
+Display images in modern supported terminals
+
+Currently this supports only the [iterm2 inline image protocol](https://iterm2.com/documentation-images.html).
+I'm open to adding more formats (sixel, kitty). PRs accepted.
+
+Supported:
+* wezterm
+* iterm2
+* [vscode](https://code.visualstudio.com/updates/v1_80#_image-support) (untested)
+* rlogin (untested)
+* mlterm (untested)
+* mintty (untested)
+* tmux (nested inside another supported terminal)
+
+Theoretically supportable:
+* kitty (uses bespoke protocol, unimplemented)
+* xterm (sixel, unimplemented)
+* foot (sixelm, unimplemented)
+
+Unsupportable (get a better terminal):
+* alacritty
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle add imgcat
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    $ gem install imgcat
 
 ## Usage
 
-TODO: Write usage instructions here
+Command line:
+```
+imgcat ruby.png
+```
+
+Ruby:
+``` ruby
+image = File.read("ruby.png")
+Imgcat.new.display(image)
+```
 
 ## Development
 
