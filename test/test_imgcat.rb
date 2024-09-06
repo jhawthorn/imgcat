@@ -7,7 +7,16 @@ class TestImgcat < Minitest::Test
     refute_nil ::Imgcat::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_displays_image
+    io = StringIO.new
+    file = File.read("#{__dir__}/../screenshot.png")
+    Imgcat.new(io).display(file)
+    output = io.string
+
+    expected = "\e]1337;File=inline=1;size=#{file.size}:"
+    assert_operator output, :start_with?, expected
+
+    expected = "\n\a\n"
+    assert_operator output, :end_with?, expected
   end
 end
