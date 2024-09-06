@@ -54,7 +54,7 @@ class Imgcat
 
   def tmux?
     term = ENV["TERM"]
-    term.start_with?("screen") || term.start_with?("tmux")
+    term&.start_with?("screen") || term&.start_with?("tmux")
   end
 
   def print_osc
