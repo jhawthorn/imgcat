@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
 
 require "imgcat"
+
+ARGV.each do |filename|
+  image = File.read(filename)
+  Imgcat.new.display(image)
+end
